@@ -1,0 +1,31 @@
+# Used CENTOS 7, file is yum.conf Dedbain version of sources.list
+# amzn2-core.repo    epel-testing.repo  nvidia-docker.repo  remi-php54.repo  remi-php71.repo  remi-php73.repo  remi-php80.repo  remi-php82.repo  remi.repo
+# amzn2-extras.repo  epel.repo          remi-modular.repo   remi-php70.repo  remi-php72.repo  remi-php74.repo  remi-php81.repo  remi-safe.repo
+
+[main]
+cachedir=/var/cache/yum/$basearch/$releasever
+keepcache=0
+debuglevel=2
+logfile=/var/log/yum.log
+exactarch=1
+obsoletes=1
+gpgcheck=1
+plugins=1
+installonly_limit=3
+distroverpkg=system-release
+timeout=5
+retries=7
+
+
+#  This is the default, if you make this bigger yum won't see if the metadata
+# is newer on the remote and so you'll "gain" the bandwidth of not having to
+# download the new metadata and "pay" for it by yum not having correct
+# information.
+#  It is esp. important, to have correct metadata, for distributions like
+# Fedora which don't keep old packages around. If you don't like this checking
+# interupting your command line usage, it's much better to have something
+# manually check the metadata once an hour (yum-updatesd will do this).
+# metadata_expire=90m
+
+# PUT YOUR REPOS HERE OR IN separate files named file.repo
+# in /etc/yum.repos.d
